@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "Todo.Grpc";
+
+service TaskProtoService {
+  rpc GetAll (GetAllTaskRequest) returns (TaskList);
+  rpc GetDone (GetDoneTaskRequest) returns (TaskList);
+  rpc GetById (GetbyIdTaskRequest) returns (TaskModel);
+}
+
+message GetAllTaskRequest {
+}
+
+
+message TaskModel {
+	int32 id = 1;
+	string description = 2;
+	bool done = 3;
+}
+
+message GetDoneTaskRequest {
+   bool done = 1;
+}
+
+message GetbyIdTaskRequest {
+	int32 id = 1;
+}
+
+message TaskList{
+	repeated TaskModel Task = 1;
+}
